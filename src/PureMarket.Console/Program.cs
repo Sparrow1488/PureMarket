@@ -12,8 +12,9 @@ Consumer consumer = new(ConsumerType.Man, Mass.CreateIn(MassUnits.Kilograms, 56)
 };
 
 BasalMetabolicRateCalculator bmrCalculator = new();
-var consumerBmr = bmrCalculator.Calculate(consumer.Type, consumer.Mass, consumer.Height, consumer.Age);
-Console.WriteLine("Consumer BMR is {0} calories", consumerBmr.MinimalCaloriesNeeded);
+var consumerBmr = bmrCalculator.Calculate(consumer.Type, consumer.Mass, consumer.Height, consumer.Age, LifestyleKind.Sports);
+Console.WriteLine("Consumer BMR is {0} calories, with your activity - {1}", 
+    consumerBmr.MinimalCaloriesNeeded, consumerBmr.LifestyleCaloriesNeeded);
 
 var consumptionStatisticsFactory = new DefaultConsumptionProviderFactory();
 var statisticsProvider = consumptionStatisticsFactory.Create();
