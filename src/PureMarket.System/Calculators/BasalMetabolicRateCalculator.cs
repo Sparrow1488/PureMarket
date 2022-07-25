@@ -63,7 +63,7 @@ public class BasalMetabolicRateCalculator : IBasalMetabolicRateCalculator
     {
         var bmrValue = 447.593 + (9.247 * mass.Value) + (3.098 * height) - (4.330 * age);
         var lifestyleBmr = CalculateLifestyleBMR(bmrValue, lifestyle);
-        return new BMR(bmrValue, lifestyleBmr, ConsumerType.Man, lifestyle);
+        return new BMR(bmrValue, lifestyleBmr, ConsumerType.Woman, lifestyle);
     }
 
     private static double CalculateLifestyleBMR(double bmr, LifestyleKind lifestyle)

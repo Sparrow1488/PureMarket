@@ -5,10 +5,12 @@ using PureMarket.System.Primitives;
 
 Console.WriteLine("PureMarket Welcome!");
 
-Consumer consumer = new(ConsumerType.Man, Mass.CreateIn(MassUnits.Kilograms, 56))
+Consumer consumer = new()
 {
+    Age = 18,
     Height = 170,
-    Age = 18
+    Type = ConsumerType.Man,
+    Mass = Mass.CreateIn(MassUnits.Kilograms, 56)
 };
 
 BasalMetabolicRateCalculator bmrCalculator = new();
