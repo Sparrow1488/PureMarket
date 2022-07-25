@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PureMarket.System", "PureMa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PureMarket.Console", "PureMarket.Console\PureMarket.Console.csproj", "{A2B547BF-D4F2-401D-B0C1-E1F930612F0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PureMarket.Tests", "PureMarket.Tests\PureMarket.Tests.csproj", "{3B145E87-7BAB-4F45-AAC9-26DD99C36053}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A2B547BF-D4F2-401D-B0C1-E1F930612F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2B547BF-D4F2-401D-B0C1-E1F930612F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2B547BF-D4F2-401D-B0C1-E1F930612F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B145E87-7BAB-4F45-AAC9-26DD99C36053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B145E87-7BAB-4F45-AAC9-26DD99C36053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B145E87-7BAB-4F45-AAC9-26DD99C36053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B145E87-7BAB-4F45-AAC9-26DD99C36053}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
