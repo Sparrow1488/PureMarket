@@ -4,10 +4,7 @@ namespace PureMarket.System.Primitives;
 
 public class Mass
 {
-    private Mass()
-    {
-
-    }
+    private Mass() { }
 
     public MassUnits Units { get; private set; }
     public double Value { get; private set; }

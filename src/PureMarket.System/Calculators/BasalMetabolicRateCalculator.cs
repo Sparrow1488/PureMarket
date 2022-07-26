@@ -35,7 +35,7 @@ public class BasalMetabolicRateCalculator : IBasalMetabolicRateCalculator
     /// <returns>Basal Metabolic Rate, <see cref="BMR"/></returns>
     /// <exception cref="InvalidValueException">Invalid input params</exception>
     /// <exception cref="NullException">Null input param</exception>
-    public BMR Calculate(ConsumerType consumer, Mass mass, int height, int age, LifestyleKind lifestyle = LifestyleKind.Sedentary)
+    public BMR Calculate(Sex consumer, Mass mass, int height, int age, LifestyleKind lifestyle = LifestyleKind.Sedentary)
     {
         Check.NotNull(mass, nameof(mass));
         Check.This(height).GreaterOrEqual(1, nameof(height));
@@ -43,9 +43,9 @@ public class BasalMetabolicRateCalculator : IBasalMetabolicRateCalculator
 
         switch (consumer)
         {
-            case ConsumerType.Man: 
+            case Sex.Man: 
                 return CalculateMenBMR(mass, height, age, lifestyle);
-            case ConsumerType.Woman:
+            case Sex.Woman:
                 return CalculateWomenBMR(mass, height, age, lifestyle);
         };
 
@@ -56,14 +56,14 @@ public class BasalMetabolicRateCalculator : IBasalMetabolicRateCalculator
     {
         var bmrValue = 88.362 + (13.397 * mass.Value) + (4.799 * height) - (5.677 * age);
         var lifestyleBmr = CalculateLifestyleBMR(bmrValue, lifestyle);
-        return new BMR(bmrValue, lifestyleBmr, ConsumerType.Man, lifestyle);
+        return new BMR(bmrValue, lifestyleBmr, Sex.Man, lifestyle);
     }
 
     private static BMR CalculateWomenBMR(Mass mass, int height, int age, LifestyleKind lifestyle)
     {
         var bmrValue = 447.593 + (9.247 * mass.Value) + (3.098 * height) - (4.330 * age);
         var lifestyleBmr = CalculateLifestyleBMR(bmrValue, lifestyle);
-        return new BMR(bmrValue, lifestyleBmr, ConsumerType.Woman, lifestyle);
+        return new BMR(bmrValue, lifestyleBmr, Sex.Woman, lifestyle);
     }
 
     private static double CalculateLifestyleBMR(double bmr, LifestyleKind lifestyle)

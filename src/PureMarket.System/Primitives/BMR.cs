@@ -7,7 +7,7 @@ public class BMR
     public BMR(
         double minimalCaloriesNeeded, 
         double lifestyleCaloriesNeeded, 
-        ConsumerType calculatedConsumerType, 
+        Sex calculatedConsumerType, 
         LifestyleKind lifestyle)
     {
         MinimalCaloriesNeeded = minimalCaloriesNeeded;
@@ -18,6 +18,6 @@ public class BMR
 
     public double MinimalCaloriesNeeded { get; }
     public double LifestyleCaloriesNeeded { get; }
-    public ConsumerType CalculatedConsumerType { get; }
+    public Sex CalculatedConsumerType { get; }
     public LifestyleKind Lifestyle { get; }
 }
