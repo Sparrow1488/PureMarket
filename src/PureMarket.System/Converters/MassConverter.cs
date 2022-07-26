@@ -1,37 +1,32 @@
 ﻿using PureMarket.System.Converters.Abstractions;
 using PureMarket.System.Enums;
+using PureMarket.System.Helpers;
 using PureMarket.System.Primitives;
 
 namespace PureMarket.System.Converters;
 
 public class MassConverter : IMassConverter
 {
-    public const double KilogramsPerOnePound = 0.45359237;
+    public MassConverter(
+        IMassConvertAlgorithmSelector algorithmSelector)
+    {
+        AlgorithmSelector = algorithmSelector;
+    }
+
+    public IMassConvertAlgorithmSelector AlgorithmSelector { get; }
 
     public bool TryConvert(Mass current, MassUnits to, out Mass? result)
     {
-        if (current.Units is MassUnits.Pounds && to is MassUnits.Kilograms)
-        {
-            result = PoundsToKilograms(current.Value);
-        }
-        else if (current.Units is MassUnits.Kilograms && to is MassUnits.Pounds)
-        {
-            result = KilogramsToPounds(current.Value);
-        }
-        else if (current.Units == to)
+        Check.NotNull(current, nameof(current));
+
+        if (current.Units == to)
         {
             result = current;
         }
         else
         {
-            result = null;
+            result = AlgorithmSelector.SelectRequired(current.Units, to).Convert(current, to);
         }
-
         return (result is not null);
     }
-
-    private static Mass PoundsToKilograms(double pounds) => 
-        Mass.CreateIn(MassUnits.Kilograms, pounds * KilogramsPerOnePound);
-    private static Mass KilogramsToPounds(double kilograms) =>
-        Mass.CreateIn(MassUnits.Pounds, kilograms / KilogramsPerOnePound);
 }

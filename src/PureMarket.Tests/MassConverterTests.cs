@@ -11,7 +11,7 @@ public class MassConverterTests
     [SetUp]
     public void Setup()
     {
-        Converter = new();
+        Converter = new(new AssemblyConvertAlgorithmSelector());
     }
 
     [Test]
@@ -38,7 +38,7 @@ public class MassConverterTests
 
     private void AssertDefault(Mass expected, Mass? actual, bool canConvert)
     {
-        Assert.NotNull(actual);
+        Assert.That(actual, Is.Not.Null);
 
         const int afterDotDigits = 4;
         var expectedValue = Math.Round(expected!.Value, afterDotDigits, MidpointRounding.ToEven);
